@@ -11,6 +11,7 @@ sway/       sway config + scripts
 waybar/     waybar config.jsonc + style.css + scripts
 foot/       foot terminal config
 fuzzel/     fuzzel launcher config
+mako/       mako notification daemon config
 zsh/        zshrc
 starship/   starship prompt config
 nvim/       LazyVim colorscheme ("monochrome")
@@ -30,6 +31,7 @@ ln -sf ~/Utils/dotfiles/waybar/style.css          ~/.config/waybar/style.css
 ln -sf ~/Utils/dotfiles/waybar/scripts            ~/.config/waybar/scripts
 ln -sf ~/Utils/dotfiles/foot/foot.ini             ~/.config/foot/foot.ini
 ln -sf ~/Utils/dotfiles/fuzzel/fuzzel.ini         ~/.config/fuzzel/fuzzel.ini
+ln -sf ~/Utils/dotfiles/mako/config               ~/.config/mako/config
 ln -sf ~/Utils/dotfiles/zsh/zshrc                 ~/.zshrc
 ln -sf ~/Utils/dotfiles/starship/starship.toml    ~/.config/starship.toml
 ln -sf ~/Utils/dotfiles/wallpaper/wallpaper_1440p.png ~/.config/sway/wallpaper_1440p.png
