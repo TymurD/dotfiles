@@ -1,0 +1,79 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "margin-top": 12,
+  "margin-left": 12,
+  "margin-right": 12,
+  "spacing": 6,
+  "modules-left": [
+    "temperature",
+    "cpu",
+    "memory"
+  ],
+  "modules-center": [
+    "sway/workspaces"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/micmute",
+    "wireplumber",
+    "sway/language",
+    "network",
+    "clock"
+  ],
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "●",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
+    }
+  },
+  "tray": {
+    "spacing": 14
+  },
+  "custom/micmute": {
+    "exec": "~/.config/waybar/scripts/mic-mute.sh",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "return-type": "json",
+    "interval": "once",
+    "signal": 8,
+    "tooltip": false
+  },
+  "wireplumber": {
+    "format": "<span color='#8a8a8a'>󰕾</span> <span color='#f2f2f2'>{volume}%</span>",
+    "format-muted": "<span color='#8a8a8a'>󰝟</span> <span color='#f2f2f2'>muted</span>"
+  },
+  "sway/language": {
+    "format": "<span color='#8a8a8a'>󰌌</span> <span color='#f2f2f2'>{short}</span>",
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+  },
+  "network": {
+    "format-ethernet": "<span color='#8a8a8a'></span> <span color='#f2f2f2'>{bandwidthDownBytes}</span>  <span color='#8a8a8a'></span> <span color='#f2f2f2'>{bandwidthUpBytes}</span>",
+    "format-disconnected": "<span color='#8a8a8a'>no network</span>",
+    "interval": 2
+  },
+  "clock": {
+    "format": "<span color='#8a8a8a'>󰅐</span> <span color='#f2f2f2'>{:%H:%M}</span>",
+    "tooltip-format": "{:%A, %d %B %Y}"
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+    "critical-threshold": 90,
+    "format": "<span color='#8a8a8a'></span> <span color='#f2f2f2'>{temperatureC}°C</span>"
+  },
+  "cpu": {
+    "format": "<span color='#8a8a8a'></span>  <span color='#f2f2f2'>{usage}%</span>",
+    "interval": 2
+  },
+  "memory": {
+    "format": "<span color='#8a8a8a'></span>  <span color='#f2f2f2'>{used:0.1f}/{total:0.0f}G</span>",
+    "interval": 5
+  }
+}

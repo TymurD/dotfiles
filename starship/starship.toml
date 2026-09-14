@@ -1,0 +1,19 @@
+add_newline = false
+
+format = "[$username](fg:#777777)[@](fg:#444444)$directory[:](fg:#444444)$character"
+
+[username]
+show_always = true
+format = "[$user]($style)"
+style_user = "fg:#777777"
+style_root = "red bold"
+
+[directory]
+format = "[$path]($style)"
+style = "bold white"
+truncation_length = 4
+truncate_to_repo = false
+
+[character]
+success_symbol = ""
+error_symbol = ""

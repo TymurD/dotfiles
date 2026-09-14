@@ -1,0 +1,112 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 15px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #f2f2f2;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.modules-left label,
+.modules-center label,
+.modules-right label,
+.modules-left button,
+.modules-center button,
+.modules-right button {
+    padding: 0 12px;
+}
+
+/* segmented capsules: every module gets its own pill */
+#temperature,
+#cpu,
+#memory,
+#tray,
+#custom-micmute,
+#wireplumber,
+#language,
+#network,
+#clock,
+#workspaces {
+    background-color: rgba(17, 17, 17, 0.65);
+    border: 1px solid #2e2e2e;
+    border-radius: 999px;
+    margin: 0 3px;
+    transition: background-color 0.15s ease-in-out;
+}
+
+#temperature:hover,
+#cpu:hover,
+#memory:hover,
+#custom-micmute:hover,
+#wireplumber:hover,
+#language:hover,
+#network:hover,
+#clock:hover {
+    background-color: rgba(5, 5, 5, 1);
+}
+
+#tray { padding: 0 14px; }
+#custom-micmute { padding: 0 12px; color: #f2f2f2; }
+#custom-micmute.muted { background-color: rgba(204, 34, 34, 0.55); }
+
+#temperature { min-width: 60px; }
+#cpu         { min-width: 55px; }
+#memory      { min-width: 88px; }
+#wireplumber { min-width: 60px; }
+#language    { min-width: 45px; }
+#network     { min-width: 200px; }
+#clock       { min-width: 72px; }
+
+#workspaces {
+    padding: 0 6px;
+}
+
+#workspaces button {
+    padding: 2px 7px;
+    color: #707070;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+#workspaces button.visible {
+    color: #c0c0c0;
+}
+
+#workspaces button.empty {
+    color: #2a2a2a;
+}
+
+#workspaces button.focused {
+    color: #f2f2f2;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.55);
+}
+
+#workspaces button:hover,
+#workspaces button.visible:hover,
+#workspaces button.empty:hover {
+    background-color: rgba(0, 0, 0, 0.45);
+    border-color: #555555;
+    color: #cccccc;
+}
+
+#workspaces button.focused:hover {
+    background-color: rgba(0, 0, 0, 0.45);
+    border-color: #555555;
+    color: #ffffff;
+}
