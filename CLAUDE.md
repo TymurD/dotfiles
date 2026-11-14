@@ -73,6 +73,13 @@ not perfectly matching the rest of the theme.
 **mako** (`mako/config`): currently just `max-visible=0` (unlimited stacked notifications) —
 not yet themed to match the palette.
 
+**hypr** (`hypr/`): Hyprland 0.57+ with the **Lua** config (`hyprland.lua`, `hyprctl dispatch`
+takes Lua expressions). Bar/notifications/launcher/lock/polkit come from myshell (separate repo,
+started via `qs -c myshell`, panels bound through its IPC); mako/waybar/polkit-gnome execs are
+commented out. `misc.allow_session_lock_restore = true` is required for the QS lock screen.
+`hyprlock.conf` is the fallback lock, themed with the palette above. Started from a tty with the
+`hy` alias in `zshrc`, which sets the session vars xdg-desktop-portal needs.
+
 **sway** (`sway/config`): `client.unfocused` border color (`#444444`) and `default_border pixel
 1` are the reference values waybar's capsule outlines were matched against.
 

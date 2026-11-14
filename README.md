@@ -1,17 +1,20 @@
 # dotfiles
 
-Personal rice: sway + waybar + foot + fuzzel + nvim (LazyVim) + zsh/starship, built around a
+Personal rice: Hyprland (Lua config) + sway + waybar + foot + fuzzel + nvim (LazyVim) + zsh/starship, built around a
 single grayscale palette (`#111111` background, `#f2f2f2` text, muted gray/amber/teal/sage
 accents — no stray hues) and a topographic contour wallpaper.
 
 ## Layout
 
 ```
+hypr/       Hyprland Lua config (hyprland.lua), hyprlock.conf, scripts
 sway/       sway config + scripts
 waybar/     waybar config.jsonc + style.css + scripts
 foot/       foot terminal config
 fuzzel/     fuzzel launcher config
 mako/       mako notification daemon config
+swaylock/   swaylock config
+environment.d/  session env (cursor theme)
 zsh/        zshrc
 starship/   starship prompt config
 nvim/       LazyVim colorscheme ("monochrome")
@@ -21,9 +24,18 @@ wallpaper/  topowall-generated wallpaper
 
 ## Install
 
+The Hyprland config launches [myshell](https://github.com/TymurD/myshell) (Quickshell: bar,
+notifications, launcher, lock, polkit), which lives in its own repo. waybar/mako/fuzzel configs
+are kept for the sway session.
+
+
 Symlink (or copy) each piece into place:
 
 ```sh
+ln -sf ~/Utils/dotfiles/hypr/hyprland.lua           ~/.config/hypr/hyprland.lua
+ln -sf ~/Utils/dotfiles/hypr/hyprlock.conf          ~/.config/hypr/hyprlock.conf
+ln -sf ~/Utils/dotfiles/hypr/scripts                ~/.config/hypr/scripts
+ln -sf ~/Utils/dotfiles/wallpaper/wallpaper_1440p.png ~/.config/hypr/wallpaper_1440p.png
 ln -sf ~/Utils/dotfiles/sway/config              ~/.config/sway/config
 ln -sf ~/Utils/dotfiles/sway/scripts              ~/.config/sway/scripts
 ln -sf ~/Utils/dotfiles/waybar/config.jsonc       ~/.config/waybar/config.jsonc
@@ -32,6 +44,8 @@ ln -sf ~/Utils/dotfiles/waybar/scripts            ~/.config/waybar/scripts
 ln -sf ~/Utils/dotfiles/foot/foot.ini             ~/.config/foot/foot.ini
 ln -sf ~/Utils/dotfiles/fuzzel/fuzzel.ini         ~/.config/fuzzel/fuzzel.ini
 ln -sf ~/Utils/dotfiles/mako/config               ~/.config/mako/config
+ln -sf ~/Utils/dotfiles/swaylock/config           ~/.config/swaylock/config
+ln -sf ~/Utils/dotfiles/environment.d/cursor.conf ~/.config/environment.d/cursor.conf
 ln -sf ~/Utils/dotfiles/zsh/zshrc                 ~/.zshrc
 ln -sf ~/Utils/dotfiles/starship/starship.toml    ~/.config/starship.toml
 ln -sf ~/Utils/dotfiles/wallpaper/wallpaper_1440p.png ~/.config/sway/wallpaper_1440p.png
@@ -54,6 +68,7 @@ Then tell LazyVim to use it — drop this into `~/.config/nvim/lua/plugins/`:
 
 ```sh
 ln -sf ~/Utils/dotfiles/nvim/colorscheme.lua ~/.config/nvim/lua/plugins/colorscheme.lua
+ln -sf ~/Utils/dotfiles/nvim/discord.lua     ~/.config/nvim/lua/plugins/discord.lua   # cord.nvim rich presence
 ```
 
 (That second file just sets `opts.colorscheme = "monochrome"` on the `LazyVim/LazyVim` plugin
