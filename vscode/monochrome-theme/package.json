@@ -1,0 +1,15 @@
+{
+  "name": "monochrome-theme",
+  "displayName": "Monochrome",
+  "description": "Black/white/gray theme",
+  "version": "1.0.0",
+  "engines": { "vscode": "^1.0.0" },
+  "categories": ["Themes"],
+  "contributes": {
+    "themes": [{
+      "label": "Monochrome",
+      "uiTheme": "vs-dark",
+      "path": "./themes/monochrome-color-theme.json"
+    }]
+  }
+}
