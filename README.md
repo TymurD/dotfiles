@@ -7,7 +7,7 @@ accents — no stray hues) and a topographic contour wallpaper.
 ## Layout
 
 ```
-hypr/       Hyprland Lua config (hyprland.lua), hyprlock.conf, scripts
+hypr/       Hyprland Lua config (hyprland.lua), hyprlock.conf, xdph.conf, scripts
 noctalia/   noctalia shell config.toml + Monochrome palette (Hyprland session)
 sway/       sway config + scripts
 waybar/     waybar config.jsonc + style.css + scripts
@@ -35,6 +35,7 @@ Symlink (or copy) each piece into place:
 ```sh
 ln -sf ~/Utils/dotfiles/hypr/hyprland.lua           ~/.config/hypr/hyprland.lua
 ln -sf ~/Utils/dotfiles/hypr/hyprlock.conf          ~/.config/hypr/hyprlock.conf
+ln -sf ~/Utils/dotfiles/hypr/xdph.conf             ~/.config/hypr/xdph.conf
 ln -sf ~/Utils/dotfiles/hypr/scripts                ~/.config/hypr/scripts
 ln -sfn ~/Utils/dotfiles/noctalia                   ~/.config/noctalia
 ln -sf ~/Utils/dotfiles/wallpaper/wallpaper_1440p.png ~/.config/hypr/wallpaper_1440p.png

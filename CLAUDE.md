@@ -89,7 +89,7 @@ takes Lua expressions). Bar/notifications/launcher/lock/polkit/wallpaper come fr
 <id>`); mako/waybar/polkit-gnome/swaybg execs are commented out. Noctalia's own config lives in
 `noctalia/` (symlinked as a whole dir to `~/.config/noctalia`). `misc.allow_session_lock_restore = true` keeps the
 session lock recoverable if the shell crashes.
-`hyprlock.conf` is the fallback lock, themed with the palette above. Started from a tty with the
+`xdph.conf` sets `allow_token_by_default` so the screen-share picker's "allow restore token" box is pre-ticked and OBS stops re-prompting every launch (sway's xdpw restores silently). `hyprlock.conf` is the fallback lock, themed with the palette above. Started from a tty with the
 `hy` alias in `zshrc`, which sets the session vars xdg-desktop-portal needs.
 
 **sway** (`sway/config`): `client.unfocused` border color (`#444444`) and `default_border pixel
