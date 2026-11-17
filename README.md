@@ -8,6 +8,7 @@ accents — no stray hues) and a topographic contour wallpaper.
 
 ```
 hypr/       Hyprland Lua config (hyprland.lua), hyprlock.conf, scripts
+noctalia/   noctalia shell config.toml + Monochrome palette (Hyprland session)
 sway/       sway config + scripts
 waybar/     waybar config.jsonc + style.css + scripts
 foot/       foot terminal config
@@ -24,8 +25,8 @@ wallpaper/  topowall-generated wallpaper
 
 ## Install
 
-The Hyprland config launches [myshell](https://github.com/TymurD/myshell) (Quickshell: bar,
-notifications, launcher, lock, polkit), which lives in its own repo. waybar/mako/fuzzel configs
+The Hyprland config launches [noctalia](https://noctalia.dev) (Arch package: bar,
+notifications, launcher, lock, polkit, wallpaper); its config is the `noctalia/` dir here. waybar/mako/fuzzel configs
 are kept for the sway session.
 
 
@@ -35,6 +36,7 @@ Symlink (or copy) each piece into place:
 ln -sf ~/Utils/dotfiles/hypr/hyprland.lua           ~/.config/hypr/hyprland.lua
 ln -sf ~/Utils/dotfiles/hypr/hyprlock.conf          ~/.config/hypr/hyprlock.conf
 ln -sf ~/Utils/dotfiles/hypr/scripts                ~/.config/hypr/scripts
+ln -sfn ~/Utils/dotfiles/noctalia                   ~/.config/noctalia
 ln -sf ~/Utils/dotfiles/wallpaper/wallpaper_1440p.png ~/.config/hypr/wallpaper_1440p.png
 ln -sf ~/Utils/dotfiles/sway/config              ~/.config/sway/config
 ln -sf ~/Utils/dotfiles/sway/scripts              ~/.config/sway/scripts

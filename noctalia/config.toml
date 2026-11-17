@@ -1,0 +1,19 @@
+# Noctalia shell config — curated layer. GUI changes land in
+# ~/.local/state/noctalia/settings.toml, which overrides this file.
+
+[theme]
+source = "custom"
+custom_palette = "Monochrome" # palettes/Monochrome.json — the repo's shared grayscale palette
+mode = "dark"
+shell_mode = "dark"
+
+[shell]
+font_family = "JetBrainsMono Nerd Font"
+polkit_agent = true # polkit-gnome exec is commented out in hyprland.lua
+setup_wizard_enabled = false
+
+# Concentric with the windows: hyprland rounding (16) + gaps_out (12) = 28,
+# so the screen edge curve runs parallel to a tiled window's corner.
+[shell.screen_corners]
+enabled = true
+size = 28

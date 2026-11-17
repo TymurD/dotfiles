@@ -1,6 +1,6 @@
 local mainMod = "SUPER"
 local terminal = "foot"
-local shell = "qs -c myshell ipc call " -- myshell IPC prefix
+local shell = "noctalia msg " -- noctalia IPC prefix (`noctalia msg --help` lists everything)
 local hyprDir = os.getenv("HOME") .. "/.config/hypr"
 
 hl.monitor({
@@ -44,11 +44,11 @@ hl.on("hyprland.start", function()
 		"dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP=Hyprland XDG_SESSION_TYPE=wayland XDG_RUNTIME_DIR MOZ_ENABLE_WAYLAND=1 ELECTRON_OZONE_PLATFORM_HINT=auto QT_QPA_PLATFORM=wayland XCURSOR_THEME=Adwaita XCURSOR_SIZE=24"
 	)
 	hl.exec_cmd("hyprctl setcursor Adwaita 24")
-	hl.exec_cmd("swaybg -i " .. hyprDir .. "/wallpaper_1440p.png -m fill")
+	-- hl.exec_cmd("swaybg -i " .. hyprDir .. "/wallpaper_1440p.png -m fill") -- noctalia owns the wallpaper now
 	-- hl.exec_cmd("mako")
 	-- hl.exec_cmd("waybar")
 	hl.exec_cmd(hyprDir .. "/scripts/primarymonitorset.sh")
-	hl.exec_cmd("qs -c myshell")
+	hl.exec_cmd("noctalia")
 	hl.exec_cmd("wl-paste --watch cliphist store") -- clipboard history (needs cliphist)
 end)
 
@@ -107,8 +107,8 @@ hl.config({
 })
 
 hl.layer_rule({
-	name = "myshell-blur",
-	match = { namespace = "^myshell-.*" },
+	name = "noctalia-blur",
+	match = { namespace = "^noctalia-.*" },
 	blur = true,
 	blur_popups = true,
 	ignore_alpha = 0.2,
@@ -147,15 +147,15 @@ hl.gesture({
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
--- myshell panels (qs -c myshell ipc show lists everything)
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(shell .. "panels toggle launcher"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(shell .. "panels toggle clipboard"))
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(shell .. "panels toggle dashboard"))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(shell .. "panels toggle notifications"))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(shell .. "panels toggle battery"))
+-- noctalia panels (ids: clipboard, control-center, launcher, session, tray-drawer, wallpaper)
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(shell .. "panel-toggle launcher"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(shell .. "panel-toggle clipboard"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(shell .. "panel-toggle control-center"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(shell .. "panel-toggle control-center notifications"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(shell .. "panel-toggle control-center system"))
 
-hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd(shell .. "panels toggle session"))
-hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(shell .. "lock lock"))
+hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd(shell .. "panel-toggle session"))
+hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(shell .. "session lock"))
 
 local dirs = { H = "left", J = "down", K = "up", L = "right" }
 for key, dir in pairs(dirs) do

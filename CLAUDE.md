@@ -70,13 +70,25 @@ screenshots. Current file deliberately only sets core UI + syntax groups and lea
 plugin's own highlights at their defaults — far more predictable, at the cost of those popups
 not perfectly matching the rest of the theme.
 
+**noctalia** (`noctalia/`): `palettes/Monochrome.json` maps the palette above onto noctalia's
+roles (surface `#111111`, surface_container `#1a1a1a`, hover `#242424`, outline_variant `#2e2e2e`,
+primary `#cccccc`, terminal block = foot's ANSI ramp). Amber `#c9a26d` is the only hue, used for
+tertiary and error since the palette has no red. `config.toml` selects it; the bar keeps noctalia's
+default solid background (a transparent capsule-only bar was tried and dropped). Screen corners are
+`size = 28` = hyprland `rounding` (16) + `gaps_out` (12), so they're concentric with tiled window
+corners; change them together. GUI changes go to
+`~/.local/state/noctalia/settings.toml`, which overrides this file, so check it if a repo value
+seems ignored.
+
 **mako** (`mako/config`): currently just `max-visible=0` (unlimited stacked notifications) —
 not yet themed to match the palette.
 
 **hypr** (`hypr/`): Hyprland 0.57+ with the **Lua** config (`hyprland.lua`, `hyprctl dispatch`
-takes Lua expressions). Bar/notifications/launcher/lock/polkit come from myshell (separate repo,
-started via `qs -c myshell`, panels bound through its IPC); mako/waybar/polkit-gnome execs are
-commented out. `misc.allow_session_lock_restore = true` is required for the QS lock screen.
+takes Lua expressions). Bar/notifications/launcher/lock/polkit/wallpaper come from noctalia
+(Arch package, native binary started as `noctalia`, panels bound via `noctalia msg panel-toggle
+<id>`); mako/waybar/polkit-gnome/swaybg execs are commented out. Noctalia's own config lives in
+`noctalia/` (symlinked as a whole dir to `~/.config/noctalia`). `misc.allow_session_lock_restore = true` keeps the
+session lock recoverable if the shell crashes.
 `hyprlock.conf` is the fallback lock, themed with the palette above. Started from a tty with the
 `hy` alias in `zshrc`, which sets the session vars xdg-desktop-portal needs.
 
