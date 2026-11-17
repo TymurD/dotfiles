@@ -17,3 +17,18 @@ setup_wizard_enabled = false
 [shell.screen_corners]
 enabled = true
 size = 28
+
+# Bar corners match hyprland window rounding (16); per-corner keys default to 12 and
+# override `radius`, so they're set too. Pills inside the bar (workspaces, capsules when
+# enabled): 0.76 × 34 ≈ 26px tall → 4px from the bar edge → 16 − 4 = 12.
+[bar.default]
+radius = 16
+radius_top_left = 16
+radius_top_right = 16
+radius_bottom_left = 16
+radius_bottom_right = 16
+capsule_radius = 12
+
+# Topowall contour wallpaper from this repo (swaybg used to draw it; noctalia owns it now).
+[wallpaper.default]
+path = "~/.config/hypr/wallpaper_1440p.png"
