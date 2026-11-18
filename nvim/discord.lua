@@ -7,7 +7,7 @@ return {
       tooltip = "LazyVim",
     },
     display = {
-      theme = "default",
+      theme = "default", -- or "atom", "catppuccin", "minecraft", etc.
     },
     idle = {
       enabled = true,

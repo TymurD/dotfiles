@@ -20,6 +20,29 @@ hl.monitor({
 	min_luminance = 0.4,
 })
 
+-- Desktop monitors (layout mirrors ~/.config/sway/config)
+hl.monitor({
+	output = "DP-1",
+	mode = "2560x1440@144",
+	position = "1920x150",
+	scale = 1,
+	vrr = 1, -- adaptive_sync on
+})
+
+hl.monitor({
+	output = "DP-2",
+	mode = "1920x1080@60",
+	position = "0x0",
+	scale = 1,
+})
+
+hl.monitor({
+	output = "HDMI-A-2",
+	mode = "1920x1080@60",
+	position = "0x1080",
+	scale = 1,
+})
+
 hl.monitor({
 	output = "",
 	mode = "preferred",
@@ -27,8 +50,17 @@ hl.monitor({
 	scale = 1,
 })
 
-for i = 1, 5 do
-	hl.workspace_rule({ workspace = tostring(i), monitor = "DP-1", default = (i == 1) })
+-- Workspace -> monitor mapping (same as sway): 1,4 main; 2,5 top-left; 3,6 bottom-left
+local workspaceMonitors = {
+	{ ws = 1, monitor = "DP-1", default = true },
+	{ ws = 4, monitor = "DP-1" },
+	{ ws = 2, monitor = "DP-2", default = true },
+	{ ws = 5, monitor = "DP-2" },
+	{ ws = 3, monitor = "HDMI-A-2", default = true },
+	{ ws = 6, monitor = "HDMI-A-2" },
+}
+for _, w in ipairs(workspaceMonitors) do
+	hl.workspace_rule({ workspace = tostring(w.ws), monitor = w.monitor, default = w.default or false })
 end
 
 hl.env("XCURSOR_THEME", "Adwaita")
@@ -50,12 +82,13 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd(hyprDir .. "/scripts/primarymonitorset.sh")
 	hl.exec_cmd("noctalia")
 	hl.exec_cmd("wl-paste --watch cliphist store") -- clipboard history (needs cliphist)
+	hl.exec_cmd("easyeffects --gapplication-service") -- run EasyEffects in background (no window)
 end)
 
 hl.config({
 	general = {
-		gaps_in = 6,
-		gaps_out = 12,
+		gaps_in = 3,
+		gaps_out = 6,
 
 		border_size = 1,
 
@@ -112,6 +145,30 @@ hl.layer_rule({
 	blur = true,
 	blur_popups = true,
 	ignore_alpha = 0.2,
+})
+
+local suppressMaximizeRule = hl.window_rule({
+	-- Ignore maximize requests from all apps. You'll probably like this.
+	name = "suppress-maximize-events",
+	match = { class = ".*" },
+
+	suppress_event = "maximize",
+})
+-- suppressMaximizeRule:set_enabled(false)
+
+hl.window_rule({
+	-- Fix some dragging issues with XWayland
+	name = "fix-xwayland-drags",
+	match = {
+		class = "^$",
+		title = "^$",
+		xwayland = true,
+		float = true,
+		fullscreen = false,
+		pin = false,
+	},
+
+	no_focus = true,
 })
 
 hl.animation({ leaf = "global", enabled = true, speed = 4, bezier = "default" })

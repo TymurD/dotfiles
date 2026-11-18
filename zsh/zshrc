@@ -31,20 +31,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
    eval "$(pyenv init - bash)" 
 fi
 
-export PATH="/usr/lib/rustup/bin:$PATH"
-export PATH="/home/tymurd/.cargo/bin:$PATH"
 export PATH="/home/tymurd/.local/bin:$PATH"
+export PATH="/home/tymurd/.cargo/bin:$PATH"
 alias ce="python3 /usr/share/gameconqueror/GameConqueror.py"
-alias sw="sway --unsupported-gpu"
-# Hyprland from tty. Session vars a display manager would normally set; must be set
-# before launch so xdg-desktop-portal picks the Hyprland portal (not wlr).
-# The rest (dbus/systemd env import, MOZ/QT/Electron vars) is in ~/.config/hypr/hyprland.lua.
-alias hy="XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=Hyprland XDG_SESSION_DESKTOP=Hyprland start-hyprland"
-alias testcheat="XKB_DEFAULT_LAYOUT=us,ua XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle cage -- firefox --new-instance -P challenge"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
-
-# ASUS platform profile (fan curve + firmware power limits)
-alias balanced="echo balanced | sudo tee /sys/firmware/acpi/platform_profile"
-alias performance="echo performance | sudo tee /sys/firmware/acpi/platform_profile"
